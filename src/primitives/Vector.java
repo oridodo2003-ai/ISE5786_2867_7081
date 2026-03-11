@@ -13,7 +13,7 @@ package primitives;
  * </p>
  */
 public class Vector extends Point {
-
+	public static final Vector AXIS_Z = new Vector(0, 0, 1);
     /**
      * Constructs a vector from three coordinate values.
      *

@@ -1,5 +1,20 @@
 package geometries.api;
-
-public class Geometry {
-
+import primitives.Point;
+import primitives.Vector;
+/**
+ * Abstract base class for all geometric objects.
+ * <p>
+ * A geometry represents a surface in 3D space.
+ * Each geometry must be able to compute the normal vector
+ * to its surface at a given point.
+ * </p>
+ */
+public abstract class Geometry {
+	 /**
+     * Returns the normal vector to the geometry at the given point.
+     *
+     * @param point a point on the surface of the geometry
+     * @return the normal vector at that point
+     */
+	public abstract Vector getNormal(Point point);
 }
