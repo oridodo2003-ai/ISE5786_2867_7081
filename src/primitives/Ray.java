@@ -1,7 +1,12 @@
 package primitives;
 
+/**
+ * Class Ray represents a ray in 3D space.
+ * A ray is defined by an origin point and a direction vector.
+ */
 public class Ray {
-	 /**
+
+    /**
      * The starting point of the ray.
      */
     private final Point _origin;
@@ -10,9 +15,16 @@ public class Ray {
      * The direction vector of the ray, always normalized.
      */
     private final Vector _direction;
+
+    /**
+     * Constructs a ray with origin point and direction vector.
+     *
+     * @param origin the starting point of the ray
+     * @param direction the direction vector of the ray
+     */
     public Ray(Point origin, Vector direction) {
-    	_origin = origin;
-    	_direction = direction.normalize();
+        _origin = origin;
+        _direction = direction.normalize();
     }
 
     /**
@@ -32,6 +44,7 @@ public class Ray {
     public Vector getDirection() {
         return _direction;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;

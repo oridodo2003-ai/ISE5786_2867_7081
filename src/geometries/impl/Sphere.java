@@ -3,7 +3,9 @@ package geometries.impl;
 import geometries.api.Geometry;
 import primitives.Point;
 import primitives.Vector;
-
+/**
+ * Class Sphere represents a sphere in 3D space.
+ */
 public class Sphere extends Geometry {
 	private final Point _center;
 	private final double _radius;

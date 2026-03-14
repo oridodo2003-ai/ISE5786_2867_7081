@@ -40,10 +40,10 @@ public class Point {
 		 return new Vector(_xyz.subtract(other._xyz));
 	 }
 	 /**
-	     * Calculates the squared distance between this point and another point.
-	     *
-	     * @param other the other point
-	     * @return squared distance
+	  * Adds a vector to this point.
+	  *
+	  * @param vector the vector to add
+	  * @return a new point obtained by adding the vector to this point
 	  */
 	 public Point add(Vector vector) {
 		 return new Point(_xyz.add(vector._xyz));
