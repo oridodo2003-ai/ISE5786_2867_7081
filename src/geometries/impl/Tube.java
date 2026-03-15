@@ -1,34 +1,28 @@
 package geometries.impl;
 
-import geometries.api.Geometry;
 import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
 /**
- * Class Tube represents an infinite cylindrical tube in 3D space.
+ * Class Tube represents an infinite cylinder in 3D space.
  */
-public class Tube extends Geometry {
+public class Tube extends RadialGeometry {
 
     /**
-     * Axis of the tube.
+     * The axis ray of the tube.
      */
-    private final Ray _axis;
+    protected final Ray _axis;
 
     /**
-     * Radius of the tube.
-     */
-    private final double _radius;
-
-    /**
-     * Constructs a tube with a given radius and axis ray.
+     * Constructor to initialize the tube with an axis and a radius.
      *
+     * @param axis   the axis ray of the tube
      * @param radius the radius of the tube
-     * @param axis the axis ray of the tube
      */
-    public Tube(double radius, Ray axis) {
+    public Tube(double radius,Ray axis) {
+        super(radius);
         _axis = axis;
-        _radius = radius;
     }
 
     @Override

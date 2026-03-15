@@ -24,6 +24,7 @@ public class Plane extends Geometry {
 
     /**
      * Constructor using three points on the plane.
+     * At this stage, the normal is initialized to null.
      *
      * @param p1 first point
      * @param p2 second point
@@ -31,9 +32,7 @@ public class Plane extends Geometry {
      */
     public Plane(Point p1, Point p2, Point p3) {
         _point = p1;
-        Vector v1 = p2.subtract(p1);
-        Vector v2 = p3.subtract(p1);
-        _normal = v1.crossProduct(v2).normalize();
+        _normal = null;
     }
 
     /**
@@ -50,8 +49,17 @@ public class Plane extends Geometry {
     /**
      * Returns the normal vector of the plane.
      *
+     * @return the normal vector
+     */
+    public Vector getNormal() {
+        return _normal;
+    }
+
+    /**
+     * Returns the normal vector of the plane at a specific point.
+     *
      * @param point point on the plane
-     * @return the normalized normal vector
+     * @return the normal vector
      */
     @Override
     public Vector getNormal(Point point) {

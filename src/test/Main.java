@@ -16,7 +16,6 @@ import primitives.*;
  * If no output appears, all tests succeeded.
  * @author Dan Zilberstein
  */
-@SuppressWarnings("java:S109")
 public final class Main {
    /** Default constructor to satisfy JavaDoc generator */
    public Main() { /* to satisfy JavaDoc generator */ }
@@ -235,7 +234,7 @@ public final class Main {
       // ---- Radial geometries ----------------------------------------------
       new Sphere(new Point(0, 0, 0), 1);
       // ---- Tube-based geometries ------------------------------------------
-      Ray axis = new Ray(Point.ZERO, Vector.AXIS_Z);
+      Ray axis = new Ray(Point.ZERO, Vector.Z_AXIS);
       new Tube(1, axis);
       new Cylinder(1, axis, 2);
    }

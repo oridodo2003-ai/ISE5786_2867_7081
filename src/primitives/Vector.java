@@ -13,10 +13,16 @@ package primitives;
  * </p>
  */
 public class Vector extends Point {
-	/**
-	 * Unit vector in the positive Z-axis direction.
-	 */
-	public static final Vector AXIS_Z = new Vector(0, 0, 1);
+    
+    /** Unit vector in the positive X-axis direction. */
+    public static final Vector X_AXIS = new Vector(1, 0, 0);
+    
+    /** Unit vector in the positive Y-axis direction. */
+    public static final Vector Y_AXIS = new Vector(0, 1, 0);
+    
+    /** Unit vector in the positive Z-axis direction. */
+    public static final Vector Z_AXIS = new Vector(0, 0, 1);
+
     /**
      * Constructs a vector from three coordinate values.
      *
@@ -27,8 +33,9 @@ public class Vector extends Point {
      */
     public Vector(double x, double y, double z) {
         super(x, y, z);
-        if (_xyz.equals(Double3.ZERO))
+        if (_xyz.equals(Double3.ZERO)) {
             throw new IllegalArgumentException("Zero vector is not allowed");
+        }
     }
 
     /**
@@ -65,30 +72,26 @@ public class Vector extends Point {
     }
 
     /**
-     * Computes the dot product of this vector with another vector.
-     * <p>
-     * The dot product is defined as:
-     * {@code x1*x2 + y1*y2 + z1*z2}
-     * </p>
+     * Computes the dot product (scalar product) of this vector with another vector.
      *
      * @param other the other vector
      * @return the dot product of the two vectors
      */
     public double dotProduct(Vector other) {
-        Double3 result = _xyz.product(other._xyz);
-        return result._d1() + result._d2() + result._d3();
+        return _xyz._d1() * other._xyz._d1() +
+               _xyz._d2() * other._xyz._d2() +
+               _xyz._d3() * other._xyz._d3();
     }
 
     /**
-     * Computes the cross product of this vector with another vector.
+     * Computes the cross product (vector product) of this vector with another vector.
      * <p>
      * The cross product returns a vector perpendicular to both input vectors.
      * </p>
      *
      * @param other the other vector
      * @return a new vector representing the cross product of the two vectors
-     * @throws IllegalArgumentException if the result is the zero vector
-     *                                  (for parallel vectors)
+     * @throws IllegalArgumentException if the result is the zero vector (for parallel vectors)
      */
     public Vector crossProduct(Vector other) {
         double x = _xyz._d2() * other._xyz._d3() - _xyz._d3() * other._xyz._d2();
@@ -100,56 +103,22 @@ public class Vector extends Point {
 
     /**
      * Computes the squared length of this vector.
-     * <p>
-     * The squared length is defined as:
-     * {@code x^2 + y^2 + z^2}
-     * </p>
      *
      * @return the squared length of the vector
      */
     public double lengthSquared() {
-        Double3 result = _xyz.product(_xyz);
-        return result._d1() + result._d2() + result._d3();
+        return _xyz._d1() * _xyz._d1() +
+               _xyz._d2() * _xyz._d2() +
+               _xyz._d3() * _xyz._d3();
     }
 
     /**
      * Computes the length of this vector.
-     * <p>
-     * The length is the square root of the squared length.
-     * </p>
      *
      * @return the length of the vector
      */
     public double length() {
         return Math.sqrt(lengthSquared());
-    }
-
-    /**
-     * Computes the squared distance between this vector and another vector.
-     * <p>
-     * Since a vector is represented by coordinates, this method reuses the
-     * implementation inherited from {@link Point}.
-     * </p>
-     *
-     * @param other the other vector
-     * @return the squared distance between the two vectors
-     */
-    public double distanceSquared(Vector other) {
-        return super.distanceSquared(other);
-    }
-
-    /**
-     * Computes the distance between this vector and another vector.
-     * <p>
-     * Since a vector is represented by coordinates, this method reuses the
-     * implementation inherited from {@link Point}.
-     * </p>
-     *
-     * @param other the other vector
-     * @return the distance between the two vectors
-     */
-    public double distance(Vector other) {
-        return super.distance(other);
     }
 
     /**
@@ -165,6 +134,7 @@ public class Vector extends Point {
         double len = length();
         return new Vector(_xyz.scale(1 / len));
     }
+
     @Override
     public String toString() {
         return "Vector" + _xyz;
